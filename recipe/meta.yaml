@@ -1,6 +1,6 @@
 {% set name = "dash-bio" %}
 {% set pkgname = "dash_bio" %}
-{% set version = "0.2.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -8,7 +8,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ pkgname }}-{{ version }}.tar.gz"
-  sha256: "526d6804646891cbed75b5ecc8001ed73cff0f2f3874c1b42b8b34007c8af63e"
+  sha256: 5436669e0aef280654a21f756b35cda03f58b10bfd8e6a19217f64966a941eb9
 
 build:
   number: 0
@@ -19,7 +19,7 @@ requirements:
     - pip
     - python
   run:
-    - dash >=1.0.0
+    - dash >=1.6.1
     - pandas
     - plotly
     - python
