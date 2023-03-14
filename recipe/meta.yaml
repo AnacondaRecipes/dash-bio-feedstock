@@ -29,9 +29,13 @@ requirements:
     - scipy
 
 test:
+  requires:
+    - pip
   imports:
     - dash_bio
     - dash_bio.component_factory
+  commdands:
+    - pip check
 
 about:
   home: "http://github.com/plotly/dash-bio"
