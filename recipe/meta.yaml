@@ -38,12 +38,12 @@ test:
     - pip check
 
 about:
-  home: "http://github.com/plotly/dash-bio"
+  home: "https://github.com/plotly/dash-bio"
   license: "MIT"
   license_family: "MIT"
   license_url: "https://github.com/plotly/dash-bio/blob/v0.2.0/LICENSE"
   summary: "dash_bio"
   description: |
     Dash Bio is a suite of bioinformatics components built to work with Dash.
-  doc_url: "https://dash.plot.ly/dash-bio"
+  doc_url: "https://dash.plotly.com/dash-bio"
   dev_url: "https://github.com/plotly/dash-bio"
