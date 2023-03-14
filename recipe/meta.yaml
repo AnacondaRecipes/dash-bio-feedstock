@@ -35,7 +35,7 @@ test:
   imports:
     - dash_bio
     - dash_bio.component_factory
-  commdands:
+  commands:
     - pip check
 
 about:
