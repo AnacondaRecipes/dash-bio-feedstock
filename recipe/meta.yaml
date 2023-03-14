@@ -18,6 +18,8 @@ requirements:
   host:
     - pip
     - python
+    - setuptools
+    - wheel
   run:
     - dash >=1.0.0
     - pandas
