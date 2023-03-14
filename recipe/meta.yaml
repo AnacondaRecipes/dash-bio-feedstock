@@ -48,3 +48,7 @@ about:
     Dash Bio is a suite of bioinformatics components built to work with Dash.
   doc_url: "https://dash.plotly.com/dash-bio"
   dev_url: "https://github.com/plotly/dash-bio"
+
+extra:
+  skip-lints:
+    - python_build_tool_in_run
