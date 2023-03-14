@@ -37,7 +37,9 @@ about:
   home: "http://github.com/plotly/dash-bio"
   license: "MIT"
   license_family: "MIT"
-  license_file: ""
+  license_file: "LICENSE"
   summary: "dash_bio"
+  description: |
+    Dash Bio is a suite of bioinformatics components built to work with Dash.
   doc_url: "https://dash.plot.ly/dash-bio"
-  dev_url: "http://github.com/plotly/dash-bio"
+  dev_url: "https://github.com/plotly/dash-bio"
