@@ -1,41 +1,66 @@
 {% set name = "dash-bio" %}
-{% set pkgname = "dash_bio" %}
-{% set version = "0.2.0" %}
+{% set version = "1.0.2" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ pkgname }}-{{ version }}.tar.gz"
-  sha256: "526d6804646891cbed75b5ecc8001ed73cff0f2f3874c1b42b8b34007c8af63e"
+  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
+    sha256: 6de28e412a37aef19429579f3285c27a5d4f21d8f387564d0698d63466259a36
+  - url: https://github.com/plotly/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: 7e28a9f95bc5f807485307b80ca86113be1f547a240d12e96fdc1a496cecc83f
+    folder: gh
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
     - python
+    - setuptools
   run:
-    - dash >=1.0.0
-    - pandas
-    - plotly
     - python
-    - scikit-learn >=0.20.1
+    - dash >=1.6.1
+    - pandas
     - scipy
+    - scikit-learn >=0.20.1
+    - biopython >=1.77
+    - colour
+    - geoparse >=1.1.0
+    - jsonschema
+    - parmed
+    - periodictable
+    - requests
 
 test:
+  source_files:
+    - gh/tests
   imports:
     - dash_bio
-    - dash_bio.component_factory
+    - dash_bio.utils
+    - dash_bio.utils.chem_structure_reader
+    - dash_bio.utils.gene_expression_reader
+    - dash_bio.utils.mutation_data_parser
+    - dash_bio.utils.uniprot_database_tools
+    - dash_bio.utils.xyz_reader
+  requires:
+    - pip
+    - pytest
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name|replace('-', '_') }}')=='{{ version }}')"
+    # integration -> ModuleNotFoundError: No module named 'dash_html_components'
+    - pytest -v gh/tests --ignore=gh/tests/integration
 
 about:
-  home: "http://github.com/plotly/dash-bio"
-  license: "MIT"
-  license_family: "MIT"
-  license_file: ""
-  summary: "dash_bio"
-  doc_url: "https://dash.plot.ly/dash-bio"
-  dev_url: "http://github.com/plotly/dash-bio"
+  home: http://github.com/plotly/dash-bio
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Dash Bio is a suite of bioinformatics components built to work with Dash.
+  description: Dash Bio is a suite of bioinformatics components built to work with Dash.
+  doc_url: https://dash.plotly.com/dash-bio
+  dev_url: http://github.com/plotly/dash-bio
